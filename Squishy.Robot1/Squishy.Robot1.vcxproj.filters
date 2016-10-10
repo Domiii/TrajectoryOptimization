@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\Render.cpp" />
+    <ClCompile Include="src\Robot1.cpp" />
+    <ClCompile Include="src\Test.cpp" />
+    <ClCompile Include="src\Tests\TestEntries.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Render.h" />
+    <ClInclude Include="src\Test.h" />
+    <ClInclude Include="src\Tests\Pendulum.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{9635a44d-1417-47dc-a35e-8740412d707f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

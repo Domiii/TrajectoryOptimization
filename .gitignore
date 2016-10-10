@@ -1,0 +1,7 @@
+*.sdf*
+*ReSharper*
+bin
+obj
+ipch
+xcode*
+*.suo
