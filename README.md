@@ -1,18 +1,18 @@
-=Trajectroy Optimization Project=
+# Trajectroy Optimization Project
 
 This has been a project for the 2013 Numerical Optimization course of the NTU Math department.
 Final presentation: https://goo.gl/cBhfHg
 
 
-==Random Notes==
+## Random Notes
 
-Papers
+### Papers
     - Survey of Numerical Methods for Trajectory Optimization [1998]
         - http://arc.aiaa.org/doi/abs/10.2514/2.4231
     
     
 
-Optimization
+### Optimization
     -> Trust Region Method is complementary problem (see Chapter 4, p.5)
     
     -> Chapter 12 Notes: Contrained Optimization
@@ -82,7 +82,7 @@ Optimization
         
         
 
-Underactuated Robotics
+### Underactuated Robotics
     -> Dynamic Programming
     -> Partial Feedback Linearization (PFL)
         -> Use active joints to control passive joints
