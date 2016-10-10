@@ -21,7 +21,7 @@ The project has two test-cases:
 
 ## Test Case #1: 2D Pathfinding
 
-The first is simple pathfinding in a 2.5D space where height indicates cost. I wrote the code by hand, which was Ok, since it did not have constraint gradients.
+The first is simple pathfinding in a 2.5D space where height indicates cost. I wrote the code by hand, which was Ok, since the constraint gradients (or: constraint Jacobian) was relatively simple to build.
 
 [You can find the code here](https://github.com/Domiii/TrajectoryOptimization/blob/master/matl/num%20opt%20proj/test1/test1run.m). It is bug-free (to the best of my knowledge).
 
