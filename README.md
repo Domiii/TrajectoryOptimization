@@ -1,6 +1,7 @@
 # Trajectroy Optimization Project
 
 This has been a project for the 2013 Numerical Optimization course of the NTU Math department.
+
 Final presentation: https://goo.gl/cBhfHg
 
 
