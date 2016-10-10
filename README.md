@@ -1,9 +1,39 @@
-# Trajectroy Optimization Project
+# Trajectroy Optimization Project [2013]
+
+## Introduction
 
 This has been a project for the 2013 Numerical Optimization course of the NTU Math department.
 
-Final presentation: https://goo.gl/cBhfHg
+I used [the Direct Collocation method as explained by Russ Tedrake here](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/video-lectures/lecture-9-trajectory-optimization/) to optimize the trajectory for any object by controlling its vector of actuators. The trajectory needs to bring the object from some start state to some goal state, subject to a set of general constraints (in this case, the constraints being basic physics). This is a common problem in path planning and robotics. You start out with an initial guess (a really bad solution that might not even satisfy all constraints), and then, by defining the physics as explicit constraints, solve and eventually (hopefully) ease into an actual solution.
 
+I used Matlab's own nonlinear constraint solver [fmincon](https://www.mathworks.com/help/optim/ug/fmincon.html) set to the [SQP algorithm](https://www.mathworks.com/help/optim/ug/constrained-nonlinear-optimization-algorithms.html#f26622) for this.
+
+[This is my final presentation](https://goo.gl/cBhfHg) (but as it turns out, I am not going quite into the computational details there).
+
+NOTE: I polluted the repository a little in an effort to generalize things, and add more projects to it, so to find your way around:
+
+* [The Final Matlab Code of the project](https://github.com/Domiii/TrajectoryOptimization/tree/master/matl/num%20opt%20proj)
+* [C# Matlab Code Creation](https://github.com/Domiii/TrajectoryOptimization/tree/master/Squishy.Matlab)
+
+The project has two test-cases:
+
+## Test Case #1: 2D Pathfinding
+
+The first is simple pathfinding in a 2.5D space where height indicates cost. I wrote the code by hand, which was Ok, since it did not have constraint gradients.
+
+[You can find the code here](https://github.com/Domiii/TrajectoryOptimization/blob/master/matl/num%20opt%20proj/test1/test1run.m). It is bug-free (to the best of my knowledge).
+
+You can see results with all kinds of different settings at the end of the presentation (because it is so nice and visual, I added more later on).
+
+## Test Case #2: Jumping Spring
+
+In this second example, I used a motor that controlled the contraction of a jumping spring (the contraction of the spring being the actuator). This is much more complex, since our constraints have non-trivial gradients. Those constraint gradients are a huge matrix where each column needs to map correctly to the other inputs. I remember, the results looked pretty good, but had a few bugs.
+
+[Here is the final Matlab script](https://github.com/Domiii/TrajectoryOptimization/blob/master/matl/num%20opt%20proj/test2/test2run.m). As you can see it is just a hell of a lot of numbers. I did not write those myself, instead I used a C# program to write this script.
+
+[Here is the C# program that created the final Matlab script](https://github.com/Domiii/TrajectoryOptimization/blob/master/Squishy.Matlab/Dyn1Program.cs).
+
+I explain some of the ideas behind the Matlab-writing-C# code in the [presentation](https://goo.gl/cBhfHg).
 
 ## Random Notes
 
