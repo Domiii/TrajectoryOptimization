@@ -4,13 +4,13 @@
 
 This has been a project for the 2013 Numerical Optimization course of the NTU Math department.
 
+[This is my final presentation](https://goo.gl/cBhfHg).
+
 In this project, I aim to optimize the trajectory for any object by controlling its vector of actuators. The trajectory needs to bring the object from some start state to some goal state, subject to a set of general constraints (in this case, the constraints being basic physics). This is a common problem in path planning and robotics.
 
 I use [a Direct Collocation method as explained by Russ Tedrake here](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/video-lectures/lecture-9-trajectory-optimization/). The method starts out with an initial guess (a really bad trajectory spanning from start to goal and might not even satisfy all constraints), and then, by defining the physics as explicit constraints, solve and eventually (hopefully) ease into an actual solution. The entire trajectory is pre-defined by `N` steps, where each step represents a subset of constraints. By increasing the amount of steps, you increase the solution's accuracy.
 
 The heavy lifting is done by Matlab's own nonlinear constraint solver [fmincon](https://www.mathworks.com/help/optim/ug/fmincon.html) set to the [SQP algorithm](https://www.mathworks.com/help/optim/ug/constrained-nonlinear-optimization-algorithms.html#f26622) for this.
-
-[This is my final presentation](https://goo.gl/cBhfHg) (but as it turns out, I am not going quite into the computational details there).
 
 NOTE: I polluted the repository a little in an effort to generalize things, and add more projects to it, so to find your way around:
 
@@ -26,6 +26,12 @@ The first is simple pathfinding in a 2.5D space where height indicates cost. I w
 [You can find the code here](https://github.com/Domiii/TrajectoryOptimization/blob/master/matl/num%20opt%20proj/test1/test1run.m). It is bug-free (to the best of my knowledge).
 
 You can see results with all kinds of different settings at the end of the presentation (because it is so nice and visual, I added more later on).
+
+The blue line is the initial guess. The red line is the optimized trajectory. As you can see, it won't easily fall into local minima.
+
+![test case #1-1](http://i.imgur.com/wKrbNa9.png)
+
+![test case #1-2](http://i.imgur.com/bmlTWmT.png)
 
 ## Test Case #2: Jumping Spring
 
