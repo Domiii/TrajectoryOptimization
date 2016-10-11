@@ -8,7 +8,7 @@ This has been a project for the 2013 Numerical Optimization course of the NTU Ma
 
 In this project, I aim to optimize the trajectory for an agent by controlling its vector of actuators. The trajectory needs to bring the object from some start state to some goal state, subject to a set of general constraints (in this case, the constraints being basic physics). This is a common problem in path planning and robotics.
 
-I use [a Direct Collocation method as explained by Russ Tedrake here](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/video-lectures/lecture-9-trajectory-optimization/). The method starts out with an initial guess (a really bad trajectory spanning from start to goal and might not even satisfy all constraints), and then, by defining the physics as explicit constraints, solve and eventually (hopefully) ease into an actual solution. The entire trajectory is pre-defined by `N` steps, where each step represents a subset of constraints. By increasing the amount of steps, you increase the solution's accuracy.
+I use [a Direct Collocation method as explained by Russ Tedrake in this lecture video](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/video-lectures/lecture-9-trajectory-optimization/) and [this paper](http://groups.csail.mit.edu/robotics-center/public_papers/Posa13.pdf). The method starts out with an initial guess (a really bad trajectory spanning from start to goal and might not even satisfy all constraints), and then, by defining the physics as explicit constraints, solve and eventually (hopefully) ease into an actual solution. The entire trajectory is pre-defined by `N` steps, where each step represents a subset of constraints. By increasing the amount of steps, you increase the solution's accuracy.
 
 The heavy lifting is done by Matlab's own nonlinear constraint solver [fmincon](https://www.mathworks.com/help/optim/ug/fmincon.html) set to the [SQP algorithm](https://www.mathworks.com/help/optim/ug/constrained-nonlinear-optimization-algorithms.html#f26622) for this.
 
@@ -35,7 +35,7 @@ The blue line is the initial guess. The red line is the optimized trajectory. As
 
 ## Test Case #2: Jumping Spring
 
-In this second example, I used a motor that controlled the contraction of a jumping spring (the contraction of the spring being the actuator). This is much more complex, since 1) this is a hybrid system, 2) the state space also has to account for velocity and non-penetrable geometry (specifically floor and ceiling) and (because of that) 3) our constraints have non-trivial (not to say very complicated) gradients. Those constraint gradients are a huge matrix where each column needs to map correctly to the other inputs and outputs, making it rather tedious to compute.
+In this second example, I used a motor that controlled the contraction of a jumping spring (the contraction of the spring being the actuator). This is much more complex, since the state space is a lot bigger, we need to account for collision dynamics (effectively making it a system of hybrid dynamics) and (because of that) our constraints have non-trivial (not to say very complicated) gradients. Those constraint gradients are a huge matrix where each column needs to map correctly to the other inputs and outputs, making it rather tedious to compute.
 
 I remember, the results looked pretty good, but had a few bugs.
 
