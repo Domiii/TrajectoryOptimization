@@ -35,7 +35,7 @@ The blue line is the initial guess. The red line is the optimized trajectory. As
 
 ## Test Case #2: Jumping Spring
 
-In this second example, I used a motor that controlled the contraction of a jumping spring (the contraction of the spring being the actuator). This is much more complex, since 1) this is a hybrid system, 2) the state space also has to account for velocity and non-penetrable barriers and 3) our constraints have non-trivial gradients. Those constraint gradients are a huge matrix where each column needs to map correctly to the other inputs and outputs, making it rather tedious to compute.
+In this second example, I used a motor that controlled the contraction of a jumping spring (the contraction of the spring being the actuator). This is much more complex, since 1) this is a hybrid system, 2) the state space also has to account for velocity and non-penetrable geometry (specifically floor and ceiling) and (because of that) 3) our constraints have non-trivial (not to say very complicated) gradients. Those constraint gradients are a huge matrix where each column needs to map correctly to the other inputs and outputs, making it rather tedious to compute.
 
 I remember, the results looked pretty good, but had a few bugs.
 
