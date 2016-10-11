@@ -6,7 +6,7 @@ This has been a project for the 2013 Numerical Optimization course of the NTU Ma
 
 [This is my final presentation](https://goo.gl/cBhfHg).
 
-In this project, I aim to optimize the trajectory for any object by controlling its vector of actuators. The trajectory needs to bring the object from some start state to some goal state, subject to a set of general constraints (in this case, the constraints being basic physics). This is a common problem in path planning and robotics.
+In this project, I aim to optimize the trajectory for an agent by controlling its vector of actuators. The trajectory needs to bring the object from some start state to some goal state, subject to a set of general constraints (in this case, the constraints being basic physics). This is a common problem in path planning and robotics.
 
 I use [a Direct Collocation method as explained by Russ Tedrake here](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-832-underactuated-robotics-spring-2009/video-lectures/lecture-9-trajectory-optimization/). The method starts out with an initial guess (a really bad trajectory spanning from start to goal and might not even satisfy all constraints), and then, by defining the physics as explicit constraints, solve and eventually (hopefully) ease into an actual solution. The entire trajectory is pre-defined by `N` steps, where each step represents a subset of constraints. By increasing the amount of steps, you increase the solution's accuracy.
 
@@ -35,7 +35,9 @@ The blue line is the initial guess. The red line is the optimized trajectory. As
 
 ## Test Case #2: Jumping Spring
 
-In this second example, I used a motor that controlled the contraction of a jumping spring (the contraction of the spring being the actuator). This is much more complex, since our constraints have non-trivial gradients. Those constraint gradients are a huge matrix where each column needs to map correctly to the other inputs. I remember, the results looked pretty good, but had a few bugs.
+In this second example, I used a motor that controlled the contraction of a jumping spring (the contraction of the spring being the actuator). This is much more complex, since 1) this is a hybrid system, 2) the state space also has to account for velocity and non-penetrable barriers and 3) our constraints have non-trivial gradients. Those constraint gradients are a huge matrix where each column needs to map correctly to the other inputs and outputs, making it rather tedious to compute.
+
+I remember, the results looked pretty good, but had a few bugs.
 
 [Here is the final Matlab script](https://github.com/Domiii/TrajectoryOptimization/blob/master/matl/num%20opt%20proj/test2/test2run.m). As you can see it is just a hell of a lot of numbers. I did not write those myself, instead I used a C# program to write this script.
 
